@@ -7,7 +7,6 @@ import { FancyButton } from './FancyButton'
 const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'Services', path: '/services' },
-  { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
 ]
 

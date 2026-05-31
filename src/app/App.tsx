@@ -8,7 +8,6 @@ import { ServicesPage } from './components/ServicesPage'
 import { ThreatReportPage } from './components/ThreatReportPage'
 import { ConsultationPage } from './components/ConsultationPage'
 import { ContactPage } from './components/ContactPage'
-import { BlogPage } from './components/BlogPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -37,7 +36,6 @@ function AppShell() {
           <Route path="/threat-report" element={<ThreatReportPage />} />
           <Route path="/consultation" element={<ConsultationPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog" element={<BlogPage />} />
         </Routes>
       </main>
       <Footer />

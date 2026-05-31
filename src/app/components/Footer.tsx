@@ -13,7 +13,6 @@ const services = [
 const company = [
   { label: 'About Us', path: '/' },
   { label: 'Services', path: '/services' },
-  { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
 ]
 
