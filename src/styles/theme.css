@@ -274,34 +274,6 @@
     color: #e8edf3 !important;
   }
 
-  /* Testimonials section: always render with dark-theme colours */
-  html:not(.dark) .testimonials-section h1,
-  html:not(.dark) .testimonials-section h2,
-  html:not(.dark) .testimonials-section h3,
-  html:not(.dark) .testimonials-section h4,
-  html:not(.dark) .testimonials-section .font-display {
-    color: #e8edf3 !important;
-  }
-
-  html:not(.dark) .testimonials-section blockquote {
-    color: #8b949e !important;
-  }
-
-  html:not(.dark) .testimonials-section .text-xs {
-    color: #5a6472 !important;
-  }
-
-  html:not(.dark) .testimonials-section .fancy .text {
-    color: #e8edf3 !important;
-  }
-
-  html:not(.dark) .testimonials-section .fancy {
-    border-color: #bf2424;
-  }
-
-  html:not(.dark) .testimonials-section .fancy::before {
-    background: #bf2424;
-  }
 
   /* Light mode: force dark text on headings */
   html:not(.dark) h1,
@@ -636,4 +608,29 @@
 @keyframes glow-border {
   0%, 100% { box-shadow: 0 0 12px rgba(191, 36, 36, 0.15), inset 0 0 12px rgba(191, 36, 36, 0.05); }
   50% { box-shadow: 0 0 30px rgba(191, 36, 36, 0.35), inset 0 0 20px rgba(191, 36, 36, 0.08); }
+}
+
+/* ── Light-mode section overrides (outside @layer — highest cascade priority) ── */
+
+html:not(.dark) .testimonials-section {
+  background: #d9d7d7 !important;
+  border-top-color: rgba(36, 35, 35, 0.08) !important;
+  border-bottom-color: rgba(36, 35, 35, 0.08) !important;
+}
+
+html:not(.dark) .testimonials-section > div[style*="radial-gradient"] {
+  display: none;
+}
+
+html:not(.dark) .testimonials-section .section-label {
+  color: #bf2424 !important;
+}
+
+html:not(.dark) .testimonials-section h2,
+html:not(.dark) .testimonials-section .font-display {
+  color: #1a1919 !important;
+}
+
+html:not(.dark) .testimonials-section .font-display .text-primary {
+  color: #bf2424 !important;
 }

@@ -462,9 +462,9 @@ export function HomePage() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="section-label mb-4">Client Results</p>
-            <h2 className="font-display" style={{ fontWeight: 800, color: '#e8edf3', fontSize: 'clamp(2rem, 5vw, 3.2rem)', lineHeight: 1 }}>
-              TRUSTED BY LEADERS WHO
-              <br /><span className="text-primary">CAN'T AFFORD TO GUESS</span>
+            <h2 className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(2rem, 5vw, 3.2rem)', lineHeight: 1 }}>
+              What people
+              <br /><span className="text-primary">have to say</span>
             </h2>
           </div>
 
