@@ -3,38 +3,10 @@ import { FancyButton } from './FancyButton'
 import { Link } from 'react-router'
 import {
   Shield, AlertTriangle, Lock, Globe, Cloud, Server,
-  Eye, ArrowRight, CheckCircle, Star, ChevronLeft, ChevronRight,
-  Activity, Download, Phone, Clock, Users, Award,
-  Zap, Database, Wifi, Target, TrendingUp, HardDrive,
+  Eye, ArrowRight, CheckCircle, Star,
+  Download, Phone, Clock, Users, Award,
   Building2, Truck, Factory, Heart, DollarSign, Package, Cpu,
 } from 'lucide-react'
-import {
-  AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  CartesianGrid, BarChart, Bar,
-} from 'recharts'
-
-// ── Data ──────────────────────────────────────────────────────────
-const threatChartData = [
-  { h: '00', blocked: 42 }, { h: '02', blocked: 38 }, { h: '04', blocked: 25 },
-  { h: '06', blocked: 67 }, { h: '08', blocked: 134 }, { h: '10', blocked: 189 },
-  { h: '12', blocked: 221 }, { h: '14', blocked: 198 }, { h: '16', blocked: 245 },
-  { h: '18', blocked: 176 }, { h: '20', blocked: 143 }, { h: '22', blocked: 89 },
-]
-
-const severityData = [
-  { label: 'Critical', count: 3, color: '#ef4444' },
-  { label: 'High', count: 18, color: '#f59e0b' },
-  { label: 'Medium', count: 54, color: '#00bcd4' },
-  { label: 'Low', count: 112, color: '#00e676' },
-]
-
-const liveLog = [
-  { t: '16:48:32', type: 'BLOCKED', msg: 'Ransomware payload — WRH-204', c: '#ef4444' },
-  { t: '16:48:19', type: 'ALERT', msg: 'Lateral movement 192.168.1.44', c: '#f59e0b' },
-  { t: '16:48:07', type: 'BLOCKED', msg: 'Phishing DNS sinkhole active', c: '#ef4444' },
-  { t: '16:47:55', type: 'INFO', msg: 'Patch sweep: 38 endpoints done', c: '#00e676' },
-  { t: '16:47:41', type: 'BLOCKED', msg: 'RDP brute-force neutralized', c: '#ef4444' },
-]
 
 const services = [
   { num: '01', icon: Shield, title: 'Endpoint Protection', desc: 'AI-driven EDR that stops zero-days, fileless attacks, and ransomware before they execute.', color: '#bf2424' },
@@ -105,63 +77,8 @@ function Counter({ end, decimals = 0, prefix = '', suffix = '' }: {
   return <span ref={ref}>{prefix}{decimals ? val.toFixed(decimals) : val.toLocaleString()}{suffix}</span>
 }
 
-// ── Radar Visual ───────────────────────────────────────────────────
-function RadarVisual() {
-  return (
-    <div className="relative w-48 h-48 flex-shrink-0" style={{ margin: '0 auto' }}>
-      {/* Rings */}
-      {[100, 72, 44].map((s, i) => (
-        <div
-          key={s}
-          className="absolute top-1/2 left-1/2 rounded-full"
-          style={{
-            width: s + '%', height: s + '%',
-            transform: 'translate(-50%, -50%)',
-            border: `1px solid rgba(191,36,36,${0.1 + i * 0.06})`,
-          }}
-        />
-      ))}
-      {/* Sweep */}
-      <div
-        className="absolute top-1/2 left-1/2 w-1/2 origin-left"
-        style={{
-          height: '1px',
-          background: 'linear-gradient(90deg, rgba(191,36,36,0.8), transparent)',
-          animation: 'radar-sweep 4s linear infinite',
-          transformOrigin: '0 50%',
-          transform: 'translate(0, -50%)',
-        }}
-      />
-      {/* Center dot */}
-      <div className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full -translate-x-1/2 -translate-y-1/2"
-        style={{ background: '#bf2424', boxShadow: '0 0 12px rgba(191,36,36,0.8)' }} />
-      {/* Blips */}
-      {[
-        { top: '25%', left: '60%', delay: '1s' },
-        { top: '65%', left: '30%', delay: '2.5s' },
-        { top: '40%', left: '75%', delay: '0.5s' },
-      ].map((b, i) => (
-        <div key={i} className="absolute w-2 h-2 rounded-full"
-          style={{
-            top: b.top, left: b.left,
-            background: '#ef4444',
-            boxShadow: '0 0 8px rgba(239,68,68,0.8)',
-            animation: `threat-pulse 2s ease-in-out ${b.delay} infinite`,
-          }}
-        />
-      ))}
-      {/* Label */}
-      <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 font-mono-data text-center"
-        style={{ color: '#bf2424', fontSize: '0.55rem', letterSpacing: '0.15em', whiteSpace: 'nowrap' }}>
-        NETWORK SCAN ACTIVE
-      </div>
-    </div>
-  )
-}
-
 // ── Main Component ─────────────────────────────────────────────────
 export function HomePage() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
 
   return (
     <div className="overflow-x-hidden">
@@ -311,6 +228,8 @@ export function HomePage() {
                   el.style.background = '#0d1117'
                   el.style.transform = 'translateY(-4px)'
                   el.style.boxShadow = `0 20px 50px rgba(0,0,0,0.4), 0 0 30px ${color}12`
+                  const h3 = el.querySelector('h3') as HTMLElement | null
+                  if (h3) h3.style.setProperty('color', color, 'important')
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement
@@ -318,6 +237,8 @@ export function HomePage() {
                   el.style.background = 'var(--card)'
                   el.style.transform = 'translateY(0)'
                   el.style.boxShadow = 'none'
+                  const h3 = el.querySelector('h3') as HTMLElement | null
+                  if (h3) h3.style.removeProperty('color')
                 }}
               >
                 {/* Number */}
@@ -404,12 +325,16 @@ export function HomePage() {
                   el.style.borderColor = 'rgba(191,36,36,0.25)'
                   el.style.transform = 'translateY(-3px)'
                   el.style.boxShadow = '0 20px 50px rgba(0,0,0,0.3), 0 0 25px rgba(191,36,36,0.08)'
+                  const lbl = el.querySelector('.font-display') as HTMLElement | null
+                  if (lbl) lbl.style.setProperty('color', '#bf2424', 'important')
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement
                   el.style.borderColor = 'rgba(255,255,255,0.06)'
                   el.style.transform = 'translateY(0)'
                   el.style.boxShadow = 'none'
+                  const lbl = el.querySelector('.font-display') as HTMLElement | null
+                  if (lbl) lbl.style.removeProperty('color')
                 }}
               >
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center mx-auto mb-4"
@@ -546,12 +471,16 @@ export function HomePage() {
                   el.style.borderColor = 'rgba(191,36,36,0.25)'
                   el.style.transform = 'translateY(-3px)'
                   el.style.background = '#0d1117'
+                  const lbl = el.querySelector('.font-display') as HTMLElement | null
+                  if (lbl) lbl.style.setProperty('color', '#bf2424', 'important')
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement
                   el.style.borderColor = 'rgba(255,255,255,0.06)'
                   el.style.transform = 'translateY(0)'
                   el.style.background = 'var(--card)'
+                  const lbl = el.querySelector('.font-display') as HTMLElement | null
+                  if (lbl) lbl.style.removeProperty('color')
                 }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
