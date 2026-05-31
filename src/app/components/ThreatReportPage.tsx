@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FancyButton } from './FancyButton'
 import { Link } from 'react-router'
 import {
   Shield, Download, CheckCircle, AlertTriangle, Lock, ArrowRight,
@@ -139,7 +140,7 @@ export function ThreatReportPage() {
                   <div
                     key={stat}
                     className="p-4 rounded-xl"
-                    style={{ background: '#0d1017', border: '1px solid rgba(255,255,255,0.07)' }}
+                    style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.07)' }}
                   >
                     <div
                       className="stat-number mb-1"
@@ -174,7 +175,7 @@ export function ThreatReportPage() {
             <div
               className="rounded-2xl overflow-hidden relative"
               style={{
-                background: '#0d1017',
+                background: 'var(--card)',
                 border: '1px solid rgba(191,36,36,0.18)',
                 boxShadow: '0 0 60px rgba(0,0,0,0.5), 0 0 40px rgba(191,36,36,0.06)',
               }}
@@ -209,10 +210,7 @@ export function ThreatReportPage() {
                     Want to discuss your specific vulnerabilities with one of our security architects?
                   </p>
                   <Link to="/consultation">
-                    <button className="btn-primary w-full">
-                      Book Your Free Consultation
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
+                    <FancyButton className="w-full">Book Your Free Consultation <ArrowRight className="w-4 h-4" /></FancyButton>
                   </Link>
                 </div>
               ) : (
@@ -284,9 +282,9 @@ export function ThreatReportPage() {
                         onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(191,36,36,0.4)')}
                         onBlur={(e) => (e.currentTarget.style.borderColor = errors.industry ? '#ef4444' : 'rgba(255,255,255,0.1)')}
                       >
-                        <option value="" style={{ background: '#0d1017' }}>Select your industry</option>
+                        <option value="" style={{ background: 'var(--card)' }}>Select your industry</option>
                         {industries.map((ind) => (
-                          <option key={ind} value={ind} style={{ background: '#0d1017' }}>{ind}</option>
+                          <option key={ind} value={ind} style={{ background: 'var(--card)' }}>{ind}</option>
                         ))}
                       </select>
                       {errors.industry && <p className="mt-1 text-xs" style={{ color: '#ef4444', fontFamily: "'DM Sans', sans-serif" }}>{errors.industry}</p>}
@@ -309,9 +307,9 @@ export function ThreatReportPage() {
                         onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(191,36,36,0.4)')}
                         onBlur={(e) => (e.currentTarget.style.borderColor = errors.employees ? '#ef4444' : 'rgba(255,255,255,0.1)')}
                       >
-                        <option value="" style={{ background: '#0d1017' }}>Select employee range</option>
+                        <option value="" style={{ background: 'var(--card)' }}>Select employee range</option>
                         {employeeRanges.map((range) => (
-                          <option key={range} value={range} style={{ background: '#0d1017' }}>{range}</option>
+                          <option key={range} value={range} style={{ background: 'var(--card)' }}>{range}</option>
                         ))}
                       </select>
                       {errors.employees && <p className="mt-1 text-xs" style={{ color: '#ef4444', fontFamily: "'DM Sans', sans-serif" }}>{errors.employees}</p>}
@@ -359,10 +357,7 @@ export function ThreatReportPage() {
                       {errors.phone && <p className="mt-1 text-xs" style={{ color: '#ef4444', fontFamily: "'DM Sans', sans-serif" }}>{errors.phone}</p>}
                     </div>
 
-                    <button type="submit" className="btn-primary w-full mt-2" style={{ justifyContent: 'center', padding: '0.85rem' }}>
-                      Download Free Report
-                      <Download className="w-4 h-4" />
-                    </button>
+                    <FancyButton type="submit" className="w-full mt-2">Download Free Report <Download className="w-4 h-4" /></FancyButton>
 
                     <p className="text-center text-xs" style={{ color: '#4b5563', fontFamily: "'DM Sans', sans-serif" }}>
                       🔒 We never sell your data. Unsubscribe any time.
@@ -403,7 +398,7 @@ export function ThreatReportPage() {
               <div
                 key={name}
                 className="p-6 rounded-xl text-left"
-                style={{ background: '#0d1017', border: '1px solid rgba(255,255,255,0.07)' }}
+                style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.07)' }}
               >
                 <p
                   className="text-sm leading-relaxed mb-4"

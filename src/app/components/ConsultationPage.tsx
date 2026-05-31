@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { FancyButton } from './FancyButton'
 import {
   Calendar, CheckCircle, Shield, Clock, Users, Award,
   ArrowRight, Phone, Mail, Zap, Lock, Star,
@@ -70,16 +71,10 @@ export function ConsultationPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href="tel:+27677497876">
-              <button className="btn-ghost">
-                <Phone className="w-4 h-4" />
-                +27 67 749 7876
-              </button>
+              <FancyButton><Phone className="w-4 h-4" /> +27 67 749 7876</FancyButton>
             </a>
             <a href="mailto:technical@predatortech.co.za">
-              <button className="btn-ghost">
-                <Mail className="w-4 h-4" />
-                technical@predatortech.co.za
-              </button>
+              <FancyButton><Mail className="w-4 h-4" /> technical@predatortech.co.za</FancyButton>
             </a>
           </div>
         </div>
@@ -130,7 +125,7 @@ export function ConsultationPage() {
                   <div
                     key={label}
                     className="p-5 rounded-xl"
-                    style={{ background: '#0d1017', border: '1px solid rgba(255,255,255,0.07)' }}
+                    style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.07)' }}
                   >
                     <div className="stat-number mb-1" style={{ fontSize: '1.8rem' }}>{value}</div>
                     <div className="text-xs" style={{ color: '#6b7685', fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
@@ -141,7 +136,7 @@ export function ConsultationPage() {
               {/* Social proof */}
               <div
                 className="mt-8 p-6 rounded-xl"
-                style={{ background: '#0d1017', border: '1px solid rgba(191,36,36,0.1)' }}
+                style={{ background: 'var(--card)', border: '1px solid rgba(191,36,36,0.1)' }}
               >
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
@@ -164,7 +159,7 @@ export function ConsultationPage() {
               <div
                 className="rounded-2xl overflow-hidden"
                 style={{
-                  background: '#0d1017',
+                  background: 'var(--card)',
                   border: '1px solid rgba(191,36,36,0.18)',
                   boxShadow: '0 0 60px rgba(0,0,0,0.5), 0 0 30px rgba(191,36,36,0.06)',
                 }}
@@ -234,7 +229,7 @@ export function ConsultationPage() {
               <div
                 key={item}
                 className="flex items-start gap-3 p-4 rounded-lg"
-                style={{ background: '#0d1017', border: '1px solid rgba(255,255,255,0.07)' }}
+                style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.07)' }}
               >
                 <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm" style={{ color: '#8b949e', fontFamily: "'DM Sans', sans-serif" }}>{item}</span>

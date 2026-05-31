@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FancyButton } from './FancyButton'
 import {
   Phone, Mail, MapPin, MessageCircle, CheckCircle, Send,
   Clock, Shield, Users, ArrowRight, Linkedin, Twitter, Github,
@@ -121,7 +122,7 @@ export function ContactPage() {
                       href={href}
                       className="flex items-start gap-4 p-5 rounded-xl transition-all hover-card-glow"
                       style={{
-                        background: '#0d1017',
+                        background: 'var(--card)',
                         border: '1px solid rgba(255,255,255,0.07)',
                         textDecoration: 'none',
                       }}
@@ -154,7 +155,7 @@ export function ContactPage() {
               {/* Office locations */}
               <div
                 className="p-6 rounded-xl"
-                style={{ background: '#0d1017', border: '1px solid rgba(255,255,255,0.07)' }}
+                style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.07)' }}
               >
                 <div className="flex items-center gap-2 mb-4">
                   <MapPin className="w-4 h-4 text-primary" />
@@ -184,7 +185,7 @@ export function ContactPage() {
                       href={href}
                       className="flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all text-sm"
                       style={{
-                        background: '#0d1017',
+                        background: 'var(--card)',
                         border: '1px solid rgba(255,255,255,0.08)',
                         color: '#6b7685',
                         fontFamily: "'DM Sans', sans-serif",
@@ -215,7 +216,7 @@ export function ContactPage() {
               <div
                 className="rounded-2xl overflow-hidden"
                 style={{
-                  background: '#0d1017',
+                  background: 'var(--card)',
                   border: '1px solid rgba(191,36,36,0.15)',
                   boxShadow: '0 0 60px rgba(0,0,0,0.4)',
                 }}
@@ -310,15 +311,13 @@ export function ContactPage() {
                         ))}
                       </div>
                       <div className="mt-6">
-                        <button
-                          className="btn-primary w-full"
-                          style={{ justifyContent: 'center' }}
+                        <FancyButton
+                          className="w-full"
                           disabled={!selected}
                           onClick={() => selected && setStep('details')}
                         >
-                          Continue
-                          <ArrowRight className="w-4 h-4" />
-                        </button>
+                          Continue <ArrowRight className="w-4 h-4" />
+                        </FancyButton>
                       </div>
                     </div>
                   )}
@@ -349,13 +348,8 @@ export function ContactPage() {
                         onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
                       />
                       <div className="flex gap-3 mt-4">
-                        <button className="btn-ghost flex-1" style={{ justifyContent: 'center' }} onClick={() => setStep('topic')}>
-                          Back
-                        </button>
-                        <button className="btn-primary flex-1" style={{ justifyContent: 'center' }} onClick={() => setStep('contact')}>
-                          Continue
-                          <ArrowRight className="w-4 h-4" />
-                        </button>
+                        <FancyButton className="flex-1" onClick={() => setStep('topic')}>Back</FancyButton>
+                        <FancyButton className="flex-1" onClick={() => setStep('contact')}>Continue <ArrowRight className="w-4 h-4" /></FancyButton>
                       </div>
                     </div>
                   )}
@@ -430,21 +424,17 @@ export function ContactPage() {
                           {errors.phone && <p className="mt-1 text-xs" style={{ color: '#ef4444', fontFamily: "'DM Sans', sans-serif" }}>{errors.phone}</p>}
                         </div>
                         <div className="flex gap-3 mt-2">
-                          <button className="btn-ghost flex-1" style={{ justifyContent: 'center' }} onClick={() => setStep('details')}>
-                            Back
-                          </button>
-                          <button
-                            className="btn-primary flex-1"
-                            style={{ justifyContent: 'center' }}
+                          <FancyButton className="flex-1" onClick={() => setStep('details')}>Back</FancyButton>
+                          <FancyButton
+                            className="flex-1"
                             onClick={() => {
                               const errs = validateContact()
                               if (Object.keys(errs).length > 0) { setErrors(errs); return }
                               setStep('done')
                             }}
                           >
-                            Send Message
-                            <Send className="w-4 h-4" />
-                          </button>
+                            Send Message <Send className="w-4 h-4" />
+                          </FancyButton>
                         </div>
                       </div>
                     </div>
@@ -470,13 +460,9 @@ export function ContactPage() {
                       </p>
                       <div className="flex gap-3 justify-center">
                         <a href="tel:+27677497876">
-                          <button className="btn-ghost">
-                            <Phone className="w-4 h-4" />
-                            Call Now
-                          </button>
+                          <FancyButton><Phone className="w-4 h-4" /> Call Now</FancyButton>
                         </a>
-                        <button
-                          className="btn-primary"
+                        <FancyButton
                           onClick={() => {
                             setStep('topic')
                             setSelected('')
@@ -485,7 +471,7 @@ export function ContactPage() {
                           }}
                         >
                           Send Another Message
-                        </button>
+                        </FancyButton>
                       </div>
                     </div>
                   )}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { FancyButton } from './FancyButton'
 import { Link } from 'react-router'
 import {
   Shield, AlertTriangle, Lock, Globe, Cloud, Server,
@@ -172,27 +173,6 @@ export function HomePage() {
 
         {/* — BG layers — */}
         <div className="absolute inset-0 hero-grid" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 70% 70% at 20% 50%, rgba(191,36,36,0.07) 0%, transparent 65%)',
-        }} />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 50% 60% at 80% 50%, rgba(0,188,212,0.04) 0%, transparent 60%)',
-        }} />
-        {/* diagonal light streak */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div style={{
-            position: 'absolute', top: '10%', left: '-20%', width: '60%', height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(191,36,36,0.15), transparent)',
-            transform: 'rotate(25deg)',
-          }} />
-          <div style={{
-            position: 'absolute', top: '30%', right: '-10%', width: '40%', height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(0,188,212,0.1), transparent)',
-            transform: 'rotate(-15deg)',
-          }} />
-        </div>
-        {/* bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-48" style={{ background: 'linear-gradient(transparent, #06080b)' }} />
 
         {/* corner frames */}
         {[
@@ -207,18 +187,10 @@ export function HomePage() {
 
         {/* — Content — */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center">
+          <div className="max-w-3xl">
 
             {/* Left */}
             <div>
-              {/* Live badge */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-8"
-                style={{ border: '1px solid rgba(191,36,36,0.22)', background: 'rgba(191,36,36,0.05)' }}>
-                <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#bf2424', boxShadow: '0 0 8px rgba(191,36,36,0.9)', animation: 'pulse-glow 2s ease-in-out infinite' }} />
-                <span className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.65rem', letterSpacing: '0.18em' }}>
-                  SOC ACTIVE — 1,247 THREATS BLOCKED TODAY
-                </span>
-              </div>
 
               {/* Headline */}
               <h1 className="font-display mb-6" style={{
@@ -228,18 +200,8 @@ export function HomePage() {
                 letterSpacing: '-0.02em',
                 color: '#e8edf3',
               }}>
-                YOUR WEAKEST<br />
-                POINT IS<br />
-                <span style={{
-                  background: 'linear-gradient(90deg, #8c0707 0%, #bf2424 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  display: 'inline-block',
-                  filter: 'drop-shadow(0 0 20px rgba(191,36,36,0.4))',
-                }}>
-                  THEIR ENTRY.
-                </span>
+                <span>Predator</span>{' '}
+                <span style={{ color: '#bf2424' }}>Technologies</span>
               </h1>
 
               <p className="mb-10 max-w-lg" style={{
@@ -252,16 +214,10 @@ export function HomePage() {
               {/* CTAs */}
               <div className="flex flex-wrap gap-4 mb-12">
                 <Link to="/consultation">
-                  <button className="btn-primary" style={{ padding: '0.85rem 2rem', fontSize: '0.95rem' }}>
-                    Book Free Consultation
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <FancyButton>Book Free Consultation <ArrowRight className="w-4 h-4" /></FancyButton>
                 </Link>
                 <Link to="/threat-report">
-                  <button className="btn-ghost" style={{ padding: '0.85rem 2rem', fontSize: '0.95rem' }}>
-                    <Download className="w-4 h-4" />
-                    Free Threat Report
-                  </button>
+                  <FancyButton><Download className="w-4 h-4" /> Free Threat Report</FancyButton>
                 </Link>
               </div>
 
@@ -281,141 +237,6 @@ export function HomePage() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Right — Dashboard card */}
-            <div className="relative hidden xl:block">
-              {/* Outer glow */}
-              <div className="absolute inset-0 rounded-2xl" style={{
-                background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(191,36,36,0.08) 0%, transparent 70%)',
-              }} />
-
-              <div className="relative rounded-2xl overflow-hidden" style={{
-                background: '#0a0e14',
-                border: '1px solid rgba(191,36,36,0.2)',
-                boxShadow: '0 0 0 1px rgba(191,36,36,0.06), 0 30px 80px rgba(0,0,0,0.6)',
-                animation: 'float 7s ease-in-out infinite',
-              }}>
-                {/* Window bar */}
-                <div className="flex items-center justify-between px-5 py-3" style={{
-                  background: 'rgba(0,0,0,0.4)',
-                  borderBottom: '1px solid rgba(255,255,255,0.05)',
-                }}>
-                  <div className="flex items-center gap-2.5">
-                    <div className="flex gap-1.5">
-                      {['#ef4444', '#f59e0b', '#22c55e'].map(c => (
-                        <div key={c} className="w-2.5 h-2.5 rounded-full" style={{ background: c, opacity: 0.8 }} />
-                      ))}
-                    </div>
-                    <span className="font-mono-data" style={{ color: '#4b5563', fontSize: '0.6rem', letterSpacing: '0.12em' }}>
-                      PREDATOR THREAT CONSOLE v4.2
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#bf2424', boxShadow: '0 0 6px rgba(191,36,36,0.8)', animation: 'pulse-glow 2s ease-in-out infinite' }} />
-                    <span className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.58rem', letterSpacing: '0.1em' }}>LIVE</span>
-                  </div>
-                </div>
-
-                {/* Top metrics */}
-                <div className="grid grid-cols-3 gap-px" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                  {[
-                    { val: '1,247', label: 'Blocked Today', color: '#ef4444' },
-                    { val: '384', label: 'Endpoints Online', color: '#bf2424' },
-                    { val: '0', label: 'Critical Alerts', color: '#bf2424' },
-                  ].map(({ val, label, color }) => (
-                    <div key={label} className="px-4 py-3" style={{ background: '#090c11' }}>
-                      <div className="stat-number" style={{ fontSize: '1.4rem', color }}>{val}</div>
-                      <div className="font-mono-data" style={{ color: '#4b5563', fontSize: '0.58rem', letterSpacing: '0.08em', marginTop: '2px' }}>{label.toUpperCase()}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Chart */}
-                <div className="px-5 pt-4 pb-2">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono-data" style={{ color: '#4b5563', fontSize: '0.6rem', letterSpacing: '0.1em' }}>THREATS BLOCKED — 24H</span>
-                    <span className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.6rem' }}>↑ 12% vs yesterday</span>
-                  </div>
-                  <ResponsiveContainer width="100%" height={110}>
-                    <AreaChart data={threatChartData} margin={{ top: 2, right: 0, bottom: 0, left: -30 }}>
-                      <defs>
-                        <linearGradient id="heroGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#bf2424" stopOpacity={0.3} />
-                          <stop offset="95%" stopColor="#bf2424" stopOpacity={0} />
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid strokeDasharray="2 4" stroke="rgba(255,255,255,0.03)" />
-                      <XAxis dataKey="h" tick={{ fill: '#3d4a56', fontSize: 9, fontFamily: 'JetBrains Mono' }} />
-                      <YAxis tick={{ fill: '#3d4a56', fontSize: 9, fontFamily: 'JetBrains Mono' }} />
-                      <Tooltip
-                        contentStyle={{ background: '#0d1017', border: '1px solid rgba(191,36,36,0.2)', borderRadius: '6px', fontSize: '11px', fontFamily: 'JetBrains Mono', color: '#e8edf3' }}
-                        cursor={{ stroke: 'rgba(191,36,36,0.2)' }}
-                      />
-                      <Area type="monotone" dataKey="blocked" stroke="#bf2424" strokeWidth={1.5} fill="url(#heroGrad)" />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-
-                {/* Severity breakdown */}
-                <div className="px-5 pb-3" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-                  <div className="pt-3 mb-2">
-                    <span className="font-mono-data" style={{ color: '#4b5563', fontSize: '0.6rem', letterSpacing: '0.1em' }}>SEVERITY BREAKDOWN</span>
-                  </div>
-                  <div className="flex gap-3 items-center">
-                    {severityData.map(({ label, count, color }) => (
-                      <div key={label} className="flex items-center gap-1.5">
-                        <div className="w-2 h-2 rounded-full" style={{ background: color }} />
-                        <span className="font-mono-data" style={{ color: '#6b7685', fontSize: '0.58rem' }}>{label}</span>
-                        <span className="font-mono-data font-bold" style={{ color, fontSize: '0.65rem' }}>{count}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Live log */}
-                <div className="px-5 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.04)', background: 'rgba(0,0,0,0.2)' }}>
-                  <div className="font-mono-data mb-2" style={{ color: '#4b5563', fontSize: '0.58rem', letterSpacing: '0.1em' }}>LIVE EVENT STREAM</div>
-                  <div className="flex flex-col gap-1.5">
-                    {liveLog.map((log, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <span className="font-mono-data shrink-0" style={{ color: '#3d4a56', fontSize: '0.58rem' }}>{log.t}</span>
-                        <span className="font-mono-data shrink-0 px-1 rounded" style={{ color: log.c, fontSize: '0.55rem', fontWeight: 700, background: `${log.c}14` }}>{log.type}</span>
-                        <span className="font-mono-data truncate" style={{ color: '#5a6472', fontSize: '0.58rem' }}>{log.msg}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Radar row */}
-                <div className="px-5 py-5" style={{ borderTop: '1px solid rgba(255,255,255,0.04)', background: 'rgba(0,0,0,0.15)' }}>
-                  <div className="flex items-center gap-6">
-                    <RadarVisual />
-                    <div className="flex flex-col gap-2">
-                      <div className="font-mono-data" style={{ color: '#4b5563', fontSize: '0.58rem', letterSpacing: '0.1em' }}>THREAT EXPOSURE SCORE</div>
-                      <div className="stat-number" style={{ fontSize: '2.5rem', lineHeight: 1 }}>9.4<span style={{ fontSize: '1rem', color: '#4b5563' }}>/10</span></div>
-                      <div className="font-mono-data text-xs" style={{ color: '#bf2424', fontSize: '0.65rem' }}>▲ PROTECTED</div>
-                      <div className="font-mono-data" style={{ color: '#4b5563', fontSize: '0.55rem', lineHeight: 1.5 }}>
-                        3 advisories pending<br />Next review: 09:00 EST
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating alert badge */}
-              <div className="absolute -top-4 -right-4 px-3 py-2 rounded-lg"
-                style={{
-                  background: '#0d1017',
-                  border: '1px solid rgba(239,68,68,0.3)',
-                  boxShadow: '0 0 20px rgba(239,68,68,0.15)',
-                  animation: 'float 5s ease-in-out 1s infinite',
-                }}>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#ef4444', animation: 'pulse-glow 1.5s ease-in-out infinite' }} />
-                  <span className="font-mono-data" style={{ color: '#ef4444', fontSize: '0.6rem', letterSpacing: '0.1em' }}>ATTACK NEUTRALIZED</span>
-                </div>
               </div>
             </div>
           </div>
@@ -470,10 +291,7 @@ export function HomePage() {
               </h2>
             </div>
             <Link to="/services" className="shrink-0">
-              <button className="btn-ghost text-sm">
-                View all services
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <FancyButton>View all services <ArrowRight className="w-4 h-4" /></FancyButton>
             </Link>
           </div>
 
@@ -483,7 +301,7 @@ export function HomePage() {
                 key={title}
                 className="group p-7 rounded-xl relative overflow-hidden cursor-default"
                 style={{
-                  background: '#0a0d12',
+                  background: 'var(--card)',
                   border: '1px solid rgba(255,255,255,0.06)',
                   transition: 'all 0.3s ease',
                 }}
@@ -497,7 +315,7 @@ export function HomePage() {
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement
                   el.style.borderColor = 'rgba(255,255,255,0.06)'
-                  el.style.background = '#0a0d12'
+                  el.style.background = 'var(--card)'
                   el.style.transform = 'translateY(0)'
                   el.style.boxShadow = 'none'
                 }}
@@ -533,135 +351,27 @@ export function HomePage() {
       {/* ════════════════════════════════════════
           THREAT INTELLIGENCE — full dashboard
       ════════════════════════════════════════ */}
-      <section className="relative py-24 overflow-hidden" style={{
+      <section className="threat-intel-section relative py-24 overflow-hidden" style={{
         background: 'linear-gradient(180deg, #06080b 0%, #060a0e 50%, #06080b 100%)',
         borderTop: '1px solid rgba(255,255,255,0.05)',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
       }}>
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 50% 70% at 75% 50%, rgba(0,188,212,0.04) 0%, transparent 65%)',
-        }} />
-
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 items-center">
-            {/* Left: text */}
-            <div className="lg:col-span-2">
-              <p className="section-label mb-5">Always-On Protection</p>
-              <h2 className="font-display mb-5" style={{ fontWeight: 800, color: '#e8edf3', fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}>
-                YOUR THREATS.
-                <br />OUR WATCH.
-                <br /><span className="text-primary">24/7/365.</span>
-              </h2>
-              <p className="mb-8 text-sm leading-relaxed" style={{ color: '#5a6472', fontFamily: "'DM Sans', sans-serif" }}>
-                Our Security Operations Center operates around the clock. Every alert has a human analyst behind it. Every threat gets a response — in under 15 minutes.
-              </p>
+          <div className="max-w-2xl">
+            <p className="section-label mb-5">Always-On Protection</p>
+            <h2 className="font-display mb-5" style={{ fontWeight: 800, color: '#e8edf3', fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}>
+              YOUR THREATS.
+              <br />OUR WATCH.
+              <br /><span className="text-primary">24/7/365.</span>
+            </h2>
+            <p className="mb-8 text-sm leading-relaxed" style={{ color: '#5a6472', fontFamily: "'DM Sans', sans-serif" }}>
+              Our Security Operations Center operates around the clock. Every alert has a human analyst behind it. Every threat gets a response — in under 15 minutes.
+            </p>
 
-              {/* KPIs */}
-              <div className="flex flex-col gap-3 mb-8">
-                {[
-                  { label: 'Threats blocked this month', val: '38,420', color: '#ef4444' },
-                  { label: 'Mean time to respond', val: '< 15 min', color: '#bf2424' },
-                  { label: 'Systems under active watch', val: '384', color: '#00bcd4' },
-                  { label: 'Critical alerts right now', val: '0', color: '#bf2424' },
-                ].map(({ label, val, color }) => (
-                  <div key={label} className="flex items-center justify-between py-2.5" style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                    <span className="text-xs" style={{ color: '#5a6472', fontFamily: "'DM Sans', sans-serif" }}>{label}</span>
-                    <span className="font-mono-data text-sm font-bold" style={{ color }}>{val}</span>
-                  </div>
-                ))}
-              </div>
 
-              <Link to="/services">
-                <button className="btn-primary text-sm" style={{ padding: '0.75rem 1.5rem' }}>
-                  Explore Threat Monitoring
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </Link>
-            </div>
-
-            {/* Right: dashboard */}
-            <div className="lg:col-span-3">
-              <div className="rounded-2xl overflow-hidden" style={{
-                background: '#090c11',
-                border: '1px solid rgba(191,36,36,0.14)',
-                boxShadow: '0 0 60px rgba(0,0,0,0.5), 0 0 40px rgba(191,36,36,0.05)',
-              }}>
-                {/* Header */}
-                <div className="flex items-center justify-between px-6 py-4" style={{
-                  background: 'rgba(0,0,0,0.3)',
-                  borderBottom: '1px solid rgba(255,255,255,0.05)',
-                }}>
-                  <div className="flex items-center gap-3">
-                    <Activity className="w-4 h-4 text-primary" />
-                    <span className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.65rem', letterSpacing: '0.12em' }}>
-                      PREDATOR INTELLIGENCE CONSOLE
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#bf2424', animation: 'pulse-glow 2s ease-in-out infinite' }} />
-                    <span className="font-mono-data" style={{ color: '#3d4a56', fontSize: '0.58rem', letterSpacing: '0.1em' }}>UPDATING LIVE</span>
-                  </div>
-                </div>
-
-                {/* Area chart */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono-data" style={{ color: '#3d4a56', fontSize: '0.6rem', letterSpacing: '0.1em' }}>ATTACKS BLOCKED — PAST 24 HOURS</span>
-                    <span className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.6rem' }}>PEAK: 245 @ 16:00</span>
-                  </div>
-                  <ResponsiveContainer width="100%" height={160}>
-                    <AreaChart data={threatChartData} margin={{ top: 5, right: 5, bottom: 0, left: -30 }}>
-                      <defs>
-                        <linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#bf2424" stopOpacity={0.22} />
-                          <stop offset="95%" stopColor="#bf2424" stopOpacity={0} />
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid strokeDasharray="2 4" stroke="rgba(255,255,255,0.03)" />
-                      <XAxis dataKey="h" tick={{ fill: '#3d4a56', fontSize: 9, fontFamily: 'JetBrains Mono' }} />
-                      <YAxis tick={{ fill: '#3d4a56', fontSize: 9, fontFamily: 'JetBrains Mono' }} />
-                      <Tooltip contentStyle={{ background: '#0d1017', border: '1px solid rgba(191,36,36,0.2)', borderRadius: '6px', fontSize: '11px', fontFamily: 'JetBrains Mono', color: '#e8edf3' }} />
-                      <Area type="monotone" dataKey="blocked" stroke="#bf2424" strokeWidth={1.5} fill="url(#dashGrad)" name="Blocked" />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-
-                {/* Two panels */}
-                <div className="grid grid-cols-2 gap-px" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                  {/* Severity bars */}
-                  <div className="p-5" style={{ background: '#090c11' }}>
-                    <p className="font-mono-data mb-3" style={{ color: '#3d4a56', fontSize: '0.6rem', letterSpacing: '0.1em' }}>SEVERITY DISTRIBUTION</p>
-                    <div className="flex flex-col gap-2.5">
-                      {severityData.map(({ label, count, color }) => (
-                        <div key={label}>
-                          <div className="flex justify-between mb-1">
-                            <span className="text-xs" style={{ color: '#5a6472', fontFamily: "'DM Sans', sans-serif" }}>{label}</span>
-                            <span className="font-mono-data text-xs" style={{ color, fontSize: '0.65rem' }}>{count}</span>
-                          </div>
-                          <div className="h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                            <div className="h-full rounded-full" style={{ width: `${(count / 187) * 100}%`, background: color, boxShadow: `0 0 6px ${color}66` }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Live stream */}
-                  <div className="p-5" style={{ background: '#090c11' }}>
-                    <p className="font-mono-data mb-3" style={{ color: '#3d4a56', fontSize: '0.6rem', letterSpacing: '0.1em' }}>LIVE EVENT STREAM</p>
-                    <div className="flex flex-col gap-1.5">
-                      {liveLog.map((log, i) => (
-                        <div key={i} className="flex items-start gap-1.5">
-                          <span className="font-mono-data shrink-0" style={{ color: '#2d3844', fontSize: '0.55rem' }}>{log.t}</span>
-                          <span className="font-mono-data shrink-0 px-1 rounded" style={{ color: log.c, fontSize: '0.52rem', fontWeight: 700, background: `${log.c}10` }}>[{log.type}]</span>
-                          <span className="font-mono-data" style={{ color: '#3d4a56', fontSize: '0.55rem', lineHeight: 1.3 }}>{log.msg}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Link to="/services">
+              <FancyButton>Explore Threat Monitoring <ArrowRight className="w-4 h-4" /></FancyButton>
+            </Link>
           </div>
         </div>
       </section>
@@ -688,7 +398,7 @@ export function HomePage() {
             ].map(({ icon: Icon, stat, unit, label, desc }) => (
               <div key={label}
                 className="p-7 rounded-xl text-center relative overflow-hidden cursor-default"
-                style={{ background: '#0a0d12', border: '1px solid rgba(255,255,255,0.06)', transition: 'all 0.3s' }}
+                style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.06)', transition: 'all 0.3s' }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement
                   el.style.borderColor = 'rgba(191,36,36,0.25)'
@@ -740,7 +450,7 @@ export function HomePage() {
       {/* ════════════════════════════════════════
           TESTIMONIALS
       ════════════════════════════════════════ */}
-      <section className="py-24 relative overflow-hidden" style={{
+      <section className="testimonials-section py-24 relative overflow-hidden" style={{
         background: '#080b0f',
         borderTop: '1px solid rgba(255,255,255,0.05)',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
@@ -808,10 +518,7 @@ export function HomePage() {
           {/* Secondary CTA */}
           <div className="text-center mt-12">
             <Link to="/consultation">
-              <button className="btn-ghost text-sm">
-                Read all case studies
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <FancyButton>Read all case studies <ArrowRight className="w-4 h-4" /></FancyButton>
             </Link>
           </div>
         </div>
@@ -833,7 +540,7 @@ export function HomePage() {
             {industries.map(({ icon: Icon, label }) => (
               <div key={label}
                 className="p-6 rounded-xl flex flex-col items-center text-center cursor-default"
-                style={{ background: '#0a0d12', border: '1px solid rgba(255,255,255,0.06)', transition: 'all 0.3s' }}
+                style={{ background: 'var(--card)', border: '1px solid rgba(255,255,255,0.06)', transition: 'all 0.3s' }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement
                   el.style.borderColor = 'rgba(191,36,36,0.25)'
@@ -844,7 +551,7 @@ export function HomePage() {
                   const el = e.currentTarget as HTMLDivElement
                   el.style.borderColor = 'rgba(255,255,255,0.06)'
                   el.style.transform = 'translateY(0)'
-                  el.style.background = '#0a0d12'
+                  el.style.background = 'var(--card)'
                 }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
@@ -863,7 +570,7 @@ export function HomePage() {
       {/* ════════════════════════════════════════
           THREAT REPORT CTA — lead gen
       ════════════════════════════════════════ */}
-      <section className="py-20 relative overflow-hidden" style={{
+      <section className="threat-report-cta-section py-20 relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #06080b 0%, #060c10 100%)',
         borderTop: '1px solid rgba(191,36,36,0.08)',
         borderBottom: '1px solid rgba(191,36,36,0.08)',
@@ -872,19 +579,21 @@ export function HomePage() {
           background: 'radial-gradient(ellipse 80% 80% at 20% 50%, rgba(191,36,36,0.05) 0%, transparent 60%)',
         }} />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            {/* Text side */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded mb-8"
+            style={{ background: 'rgba(191,36,36,0.07)', border: '1px solid rgba(191,36,36,0.18)' }}>
+            <Download className="w-3.5 h-3.5 text-primary" />
+            <span className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.62rem', letterSpacing: '0.14em' }}>FREE DOWNLOAD — INSTANT ACCESS</span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left: heading */}
+            <h2 className="font-display" style={{ fontWeight: 800, color: '#e8edf3', fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1 }}>
+              2025 SMB THREAT<br />
+              <span className="text-primary">LANDSCAPE REPORT</span>
+            </h2>
+
+            {/* Right: description + checklist + button */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded mb-6"
-                style={{ background: 'rgba(191,36,36,0.07)', border: '1px solid rgba(191,36,36,0.18)' }}>
-                <Download className="w-3.5 h-3.5 text-primary" />
-                <span className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.62rem', letterSpacing: '0.14em' }}>FREE DOWNLOAD — INSTANT ACCESS</span>
-              </div>
-              <h2 className="font-display mb-4" style={{ fontWeight: 800, color: '#e8edf3', fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}>
-                2025 SMB THREAT<br />
-                <span className="text-primary">LANDSCAPE REPORT</span>
-              </h2>
-              <p className="mb-6 text-sm leading-relaxed" style={{ color: '#5a6472', fontFamily: "'DM Sans', sans-serif", maxWidth: '420px' }}>
+              <p className="mb-6 text-sm leading-relaxed" style={{ color: '#5a6472', fontFamily: "'DM Sans', sans-serif" }}>
                 Built from analysis of 2,400+ organizations. Discover the 7 vulnerabilities attackers are actively exploiting in your sector — and the exact steps to close them.
               </p>
               <ul className="flex flex-col gap-2 mb-8">
@@ -901,50 +610,8 @@ export function HomePage() {
                 ))}
               </ul>
               <Link to="/threat-report">
-                <button className="btn-primary" style={{ padding: '0.85rem 2rem' }}>
-                  Download Free Report
-                  <Download className="w-4 h-4" />
-                </button>
+                <FancyButton>Download Free Report <Download className="w-4 h-4" /></FancyButton>
               </Link>
-            </div>
-
-            {/* Report preview */}
-            <div className="rounded-2xl overflow-hidden relative" style={{
-              background: '#0a0d12',
-              border: '1px solid rgba(191,36,36,0.15)',
-              boxShadow: '0 0 60px rgba(0,0,0,0.5)',
-            }}>
-              <div className="absolute top-0 left-0 right-0 h-1" style={{ background: '#bf2424' }} />
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <Shield className="w-8 h-8 text-primary" />
-                  <div>
-                    <div className="font-display" style={{ fontSize: '1rem', fontWeight: 700, color: '#e8edf3' }}>Predator Tech</div>
-                    <div className="font-mono-data" style={{ color: '#bf2424', fontSize: '0.6rem', letterSpacing: '0.1em' }}>THREAT INTELLIGENCE REPORT 2025</div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  {[
-                    { label: 'SMBs attacked in 2024', pct: 87, color: '#ef4444' },
-                    { label: 'Avg days to detect breach', pct: 72, color: '#f59e0b' },
-                    { label: 'Businesses lacking EDR', pct: 62, color: '#00bcd4' },
-                    { label: 'Incidents from phishing', pct: 91, color: '#bf2424' },
-                  ].map(({ label, pct, color }) => (
-                    <div key={label}>
-                      <div className="flex justify-between mb-1.5">
-                        <span className="text-xs" style={{ color: '#5a6472', fontFamily: "'DM Sans', sans-serif" }}>{label}</span>
-                        <span className="font-mono-data text-xs font-bold" style={{ color, fontSize: '0.7rem' }}>{pct}%</span>
-                      </div>
-                      <div className="h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                        <div className="h-full rounded-full" style={{ width: `${pct}%`, background: color, boxShadow: `0 0 8px ${color}55` }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-6 text-xs" style={{ color: '#3d4a56', fontFamily: "'DM Sans', sans-serif" }}>
-                  Based on 2,400+ orgs · North America · 2024–2025
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -966,20 +633,12 @@ export function HomePage() {
           <p className="section-label mb-7">Don't Wait to Get Attacked</p>
           <h2 className="font-display mb-7" style={{
             fontWeight: 800,
-            color: '#e8edf3',
             lineHeight: 0.9,
             fontSize: 'clamp(3rem, 8vw, 6.5rem)',
             letterSpacing: '-0.02em',
           }}>
-            STOP WAITING
-            <br />TO GET
-            <br /><span style={{
-              background: 'linear-gradient(90deg, #8c0707, #bf2424)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 0 25px rgba(191,36,36,0.45))',
-            }}>ATTACKED.</span>
+            <span style={{ color: '#1a1919' }}>AVOID</span>{' '}
+            <span style={{ color: '#bf2424' }}>ATTACKS</span>
           </h2>
           <p className="mb-12 mx-auto" style={{
             fontFamily: "'DM Sans', sans-serif",
@@ -992,16 +651,10 @@ export function HomePage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
             <Link to="/consultation">
-              <button className="btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
-                Book Free Consultation
-                <ArrowRight className="w-5 h-5" />
-              </button>
+              <FancyButton>Book Free Consultation <ArrowRight className="w-4 h-4" /></FancyButton>
             </Link>
             <a href="tel:+27677497876">
-              <button className="btn-ghost" style={{ padding: '1rem 2.5rem', fontSize: '1rem' }}>
-                <Phone className="w-4 h-4" />
-                +27 67 749 7876
-              </button>
+              <FancyButton><Phone className="w-4 h-4" /> +27 67 749 7876</FancyButton>
             </a>
           </div>
           <p className="text-xs" style={{ color: '#3d4a56', fontFamily: "'DM Sans', sans-serif" }}>

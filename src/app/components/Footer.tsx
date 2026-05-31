@@ -28,6 +28,7 @@ const resources = [
 export function Footer() {
   return (
     <footer
+      className="footer-section"
       style={{
         background: '#04060a',
         borderTop: '1px solid rgba(255,255,255,0.07)',

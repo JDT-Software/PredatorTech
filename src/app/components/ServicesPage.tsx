@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { FancyButton } from './FancyButton'
 import {
   Shield, Eye, Lock, Cloud, Server, Database, HardDrive, Cpu,
   CheckCircle, ArrowRight, ChevronRight, Zap, Globe, AlertTriangle,
@@ -132,7 +133,7 @@ export function ServicesPage() {
     <div style={{ paddingTop: '64px' }}>
       {/* Hero */}
       <section
-        className="relative py-24 lg:py-32"
+        className="services-hero-section relative py-24 lg:py-32"
         style={{
           background: 'linear-gradient(180deg, #04060a 0%, #06080b 100%)',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
@@ -174,13 +175,10 @@ export function ServicesPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link to="/consultation">
-              <button className="btn-primary">
-                Book Free Consultation
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <FancyButton>Book Free Consultation <ArrowRight className="w-4 h-4" /></FancyButton>
             </Link>
             <Link to="/threat-report">
-              <button className="btn-ghost">Get Free Threat Report</button>
+              <FancyButton>Get Free Threat Report</FancyButton>
             </Link>
           </div>
         </div>
@@ -195,7 +193,7 @@ export function ServicesPage() {
                 key={title}
                 className="rounded-2xl overflow-hidden"
                 style={{
-                  background: '#0d1017',
+                  background: 'var(--card)',
                   border: '1px solid rgba(255,255,255,0.07)',
                 }}
               >
@@ -263,19 +261,7 @@ export function ServicesPage() {
                     </ul>
                     <div className="mt-6 pt-6" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                       <Link to="/consultation">
-                        <button
-                          className="inline-flex items-center gap-2 text-sm font-semibold transition-all"
-                          style={{
-                            fontFamily: "'DM Sans', sans-serif",
-                            color,
-                            background: 'transparent',
-                            border: 'none',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          Get a custom quote
-                          <ChevronRight className="w-4 h-4" />
-                        </button>
+                        <FancyButton>Get a custom quote <ChevronRight className="w-4 h-4" /></FancyButton>
                       </Link>
                     </div>
                   </div>
@@ -288,7 +274,7 @@ export function ServicesPage() {
 
       {/* CTA */}
       <section
-        className="py-20"
+        className="services-cta-section py-20"
         style={{
           background: '#080c10',
           borderTop: '1px solid rgba(255,255,255,0.05)',
@@ -310,10 +296,7 @@ export function ServicesPage() {
             Every business is different. Our security architects design a custom solution that fits your industry, compliance requirements, and budget.
           </p>
           <Link to="/consultation">
-            <button className="btn-primary" style={{ padding: '0.9rem 2.5rem', fontSize: '1rem' }}>
-              Schedule a Security Assessment
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <FancyButton>Schedule a Security Assessment <ArrowRight className="w-4 h-4" /></FancyButton>
           </Link>
         </div>
       </section>

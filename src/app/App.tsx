@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router'
 import { useEffect } from 'react'
+import { ThemeProvider } from './ThemeContext'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { HomePage } from './components/HomePage'
@@ -22,8 +23,8 @@ function AppShell() {
     <div
       className="min-h-screen"
       style={{
-        background: '#06080b',
-        color: '#e8edf3',
+        background: 'var(--background)',
+        color: 'var(--foreground)',
         fontFamily: "'DM Sans', sans-serif",
       }}
     >
@@ -46,8 +47,10 @@ function AppShell() {
 
 export default function App() {
   return (
-    <Router>
-      <AppShell />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <AppShell />
+      </Router>
+    </ThemeProvider>
   )
 }

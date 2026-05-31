@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FancyButton } from './FancyButton'
 import { Link } from 'react-router'
 import {
   Search, ArrowRight, Clock, Tag, ChevronRight, Shield,
@@ -187,7 +188,7 @@ export function BlogPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm outline-none transition-all"
                 style={{
-                  background: '#0d1017',
+                  background: 'var(--card)',
                   border: '1px solid rgba(255,255,255,0.08)',
                   color: '#e8edf3',
                   fontFamily: "'DM Sans', sans-serif",
@@ -205,7 +206,7 @@ export function BlogPage() {
                   className="px-4 py-2 rounded-lg text-sm font-semibold transition-all"
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    background: activeCategory === id ? '#bf2424' : '#0d1017',
+                    background: activeCategory === id ? '#bf2424' : 'var(--card)',
                     color: activeCategory === id ? '#ffffff' : '#8b949e',
                     border: activeCategory === id ? '1px solid #bf2424' : '1px solid rgba(255,255,255,0.08)',
                   }}
@@ -222,7 +223,7 @@ export function BlogPage() {
             <div
               className="rounded-2xl overflow-hidden mb-8 hover-card-glow"
               style={{
-                background: '#0d1017',
+                background: 'var(--card)',
                 border: '1px solid rgba(191,36,36,0.15)',
               }}
             >
@@ -337,7 +338,7 @@ export function BlogPage() {
                   key={post.id}
                   className="rounded-xl overflow-hidden hover-card-glow flex flex-col"
                   style={{
-                    background: '#0d1017',
+                    background: 'var(--card)',
                     border: '1px solid rgba(255,255,255,0.07)',
                   }}
                 >
@@ -439,10 +440,7 @@ export function BlogPage() {
                 onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(191,36,36,0.4)')}
                 onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
               />
-              <button className="btn-primary shrink-0">
-                Subscribe Free
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <FancyButton>Subscribe Free <ArrowRight className="w-4 h-4" /></FancyButton>
             </div>
             <p className="mt-4 text-xs" style={{ color: '#4b5563', fontFamily: "'DM Sans', sans-serif" }}>
               Join 14,000+ subscribers. No spam. Unsubscribe any time.

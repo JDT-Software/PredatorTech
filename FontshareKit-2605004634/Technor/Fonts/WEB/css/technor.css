@@ -1,0 +1,22 @@
+/**
+* @license
+*
+* Font Family: Technor
+* Designed by: Jean-Baptiste Morizot
+* URL: https://www.fontshare.com/fonts/technor
+* © 2026 Indian Type Foundry
+*
+* Technor Bold 
+
+*
+*/
+@font-face {
+  font-family: 'Technor-Bold';
+  src: url('../fonts/Technor-Bold.woff2') format('woff2'),
+       url('../fonts/Technor-Bold.woff') format('woff'),
+       url('../fonts/Technor-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
